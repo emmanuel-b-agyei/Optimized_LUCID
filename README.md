@@ -84,18 +84,13 @@ Threaded DDoS prediction with quantized model
 Colored and logged output
 
 📊 Example Output
-plaintext
-Copy code
-[DDoS Alert] 192.168.1.2 → 10.0.0.5 | Packet classified as DDoS ⚠️
-[Normal]     10.0.0.5 → 192.168.1.2 | Packet classified as Normal ✅
+
+[DDoS Alert] DDoS Rate:  ⚠️
+[Normal] DDoS Rate:  ✅
 Log file: output/prediction_log.txt
 
 🧠 Model Performance (Validation)
-Metric	Value
-Accuracy	99.02%
-F1-Score	0.99
-Inference	~2 ms
-Model Size	~200 KB (.tflite)
+
 
 Evaluated on CIC-DDoS2019 using 80/20 split.
 
@@ -110,12 +105,9 @@ Applying class weights during training
 
 Adjust learning rate, dropout, and kernel size if porting to new datasets or hardware.
 
-📜 License
-This project is licensed under the MIT License.
-See LICENSE for details.
 
 This work incorporates and extends the official LUCID project (Apache License 2.0) and is intended for academic and non-commercial research use.
 
 🙏 Acknowledgements
 Thanks to the original authors of LUCID for their foundational work in lightweight, deep learning-based DDoS detection.
-This optimized version was developed for a university thesis focused on low-latency packet classification.
+This optimized version was developed for a university thesis focused on low-latency and reduced computational overhead packet classification.
