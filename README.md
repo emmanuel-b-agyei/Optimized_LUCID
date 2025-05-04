@@ -36,7 +36,9 @@ Funded by Horizon 2020 under grants no. 815141 (DECENTER), 830929 (CyberSec4Euro
 
 lucid/
 ├── data/ # Datasets and parsed HDF5 files
+
 ├── models/ # Saved Keras and TFLite models
+
 ├── output/ # Best model checkpoints and logs
 ├── sample-dataset/ # Sample PCAPs for live prediction
 ├── lucid_cnn.py # Main training + evaluation script
