@@ -25,7 +25,7 @@ Funded by Horizon 2020 under grants no. 815141 (DECENTER), 830929 (CyberSec4Euro
 |---|---------------------------|-----------------------------------------------------------------------------|
 | 1 | Optimized CNN Architecture | Uses `SeparableConv2D`, `BatchNormalization`, and `GlobalAveragePooling2D`. |
 | 2 | Efficient Data Preprocessing | Speeds up PCAP parsing using `multiprocessing.Pool` and `joblib` caching.  |
-| 3 | Hyperparameter Tuning     | Applies `RandomizedSearchCV` for optimizing LR, batch size, dropout, etc.  |
+| 3 | Hyperparameter Tuning     |  Auto-tune model parameter using Optuna hyperparameter optimization framework  |
 | 4 | Model Quantization        | Converts `.h5` models to `.tflite` for faster inference and smaller size.  |
 | 5 | Threaded Live Prediction  | Captures and classifies packets in real-time using parallel threads.       |
 | 6 | Colorized Output + Logging | Uses ANSI colors for terminal output and logs all predictions to file.     |
