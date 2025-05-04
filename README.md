@@ -37,18 +37,18 @@ Funded by Horizon 2020 under grants no. 815141 (DECENTER), 830929 (CyberSec4Euro
 ```graphql
 
 lucid/
-├── data/                |  # Datasets and parsed HDF5 files
-├── models/              |  # Saved Keras and TFLite models
-├── output/              | # Best model checkpoints and logs
-├── sample-dataset/      | # Sample PCAPs for live prediction
-├── lucid_cnn.py         | # Main training + evaluation script
-├── live_predict.py      | # Threaded packet capture and prediction
+├── data/                | Datasets and parsed HDF5 files
+├── models/              | Saved Keras and TFLite models
+├── output/              | Best model checkpoints and logs
+├── sample-dataset/      | Sample PCAPs for live prediction
+├── lucid_cnn.py         | Main training + evaluation script
+├── live_predict.py      | Threaded packet capture and prediction
 ├── utils/
-│   ├── data_preprocessing.py  | # PCAP parsing, caching, and cleaning
-│   ├── model_architectures.py | # CNN architectures (original and optimized)
-│   ├── training.py            | # Training, tuning, early stopping
-│   ├── inference.py           | # Inference + quantization
-│   └── logger.py              | # Colored output + logging
+│   ├── data_preprocessing.py  | PCAP parsing, caching, and cleaning
+│   ├── model_architectures.py | CNN architectures (original and optimized)
+│   ├── training.py            | Training, tuning, early stopping
+│   ├── inference.py           | Inference + quantization
+│   └── logger.py              | Colored output + logging
 ├── requirements.txt
 └── README.md
 
@@ -71,10 +71,11 @@ pip install -r requirements.txt
 ```
 
 4. Prepare Dataset
+   
 Place your .pcap or .hdf5 training files into the data/ directory.
 Use utils/data_preprocessing.py to convert raw PCAPs if needed.
 
-5. Train the Model
+6. Train the Model
 ```
 python lucid_cnn.py --train --dataset ./data/train.hdf5
 ```
