@@ -32,107 +32,59 @@ Funded by Horizon 2020 under grants no. 815141 (DECENTER), 830929 (CyberSec4Euro
 
 ---
 
-## Project Structure
-
-<pre> lucid/ ├── data/ # Datasets and parsed HDF5 files ├── models/ # Saved Keras and TFLite models ├── output/ # Best model checkpoints and logs ├── sample-dataset/ # Sample PCAPs for live prediction ├── lucid_cnn.py # Main training + evaluation script ├── live_predict.py # Threaded packet capture and prediction ├── utils/ │ ├── data_preprocessing.py # PCAP parsing, caching, and cleaning │ ├── model_architectures.py # CNN architectures (original and optimized) │ ├── training.py # Training, tuning, early stopping │ ├── inference.py # Inference + quantization │ └── logger.py # Colored output + logging ├── requirements.txt └── README.md </pre>
-
-
-lucid/
-├── data/                  # Datasets and parsed HDF5 files
-├── models/                # Saved Keras and TFLite models
-├── output/                # Best model checkpoints and logs
-├── sample-dataset/        # Sample PCAPs for live prediction
-├── lucid_cnn.py           # Main training + evaluation script
-├── live_predict.py        # Threaded packet capture and prediction
-├── utils/
-│   ├── data_preprocessing.py   # PCAP parsing, caching, and cleaning
-│   ├── model_architectures.py  # CNN architectures (original and optimized)
-│   ├── training.py             # Training, tuning, early stopping
-│   ├── inference.py            # Inference + quantization
-│   └── logger.py               # Colored output + logging
-├── requirements.txt
-└── README.md
-
-
-
-
----
-
-## Setup Instructions
+lucid/ ├── data/ # Datasets and parsed HDF5 files ├── models/ # Saved Keras and TFLite models ├── output/ # Best model checkpoints and logs ├── sample-dataset/ # Sample PCAPs for live prediction ├── lucid_cnn.py # Main training + evaluation script ├── live_predict.py # Threaded packet capture and prediction ├── utils/ │ ├── data_preprocessing.py # PCAP parsing, caching, and cleaning │ ├── model_architectures.py# CNN architectures (original and optimized) │ ├── training.py # Training, tuning, early stopping │ ├── inference.py # Inference + quantization │ └── logger.py # Colored output + logging ├── requirements.txt └── README.md
+## ⚙️ Setup Instructions
 
 ### 1. Clone the Repository
+bash git clone https://github.com/your-username/lucid.git cd lucid
+### 2. Install Dependencies
+bash pip install -r requirements.txt
+### 3. Prepare Dataset
 
-```bash
-git clone https://github.com/your-username/lucid.git
-cd lucid
-```
+Place your `.pcap` or `.hdf5` training files into the `data/` directory. If you have raw PCAP files, use the `utils/data_preprocessing.py` script to parse and convert them into the HDF5 format.
 
-2. Install Dependencies
-```
-pip install -r requirements.txt
-```
+## 🏋️‍♂️ Train the Model
+bash python lucid_cnn.py --train --dataset ./data/train.hdf5
+This command will:
 
-4. Prepare Dataset
-Place your .pcap or .hdf5 training files into the data/ directory.
-Use utils/data_preprocessing.py to convert raw PCAPs if needed.
+* Train the CNN using the optimized architecture defined in `utils/model_architectures.py`.
+* Tune hyperparameters using `RandomizedSearchCV` for optimal performance.
+* Apply early stopping to prevent overfitting and save the best model.
+* Quantize the best trained model to a `.tflite` format for efficient inference.
 
-🏋️‍♂️ Train the Model
-```
-python lucid_cnn.py --train --dataset ./data/train.hdf5
-```
+Saved Keras models and their quantized `.tflite` versions, along with training logs, will be located in the `./output/` directory.
 
-This will:
+## 🧪 Predict from Live Traffic
+bash python live_predict.py --model ./output/best_model.tflite
+This script performs:
 
-Train the CNN using the optimized architecture
+* Real-time packet sniffing from your network interface.
+* Threaded prediction of potential DDoS attacks using the provided quantized `.tflite` model.
+* Clear, colored console output indicating the classification of each processed packet.
+* Detailed logging of predictions to `output/prediction_log.txt`.
 
-Tune hyperparameters using RandomizedSearchCV
+## 📊 Example Output
+plaintext [DDoS Alert] 192.168.1.2 → 10.0.0.5 | Packet classified as DDoS ⚠️ [Normal] 10.0.0.5 → 192.168.1.2 | Packet classified as Normal ✅ Log file: output/prediction_log.txt
+## 🧠 Model Performance (Validation)
 
-Apply early stopping and save the best model
+| Metric      | Value   |
+| ----------- | ------- |
+| Accuracy    | 99.02%  |
+| F1-Score    | 0.99    |
+| Inference   | ~2 ms   |
+| Model Size  | ~200 KB |
+| Evaluated on | CIC-DDoS2019 using 80/20 split. |
 
-Quantize the best model to .tflite
+## 📌 Tips & Troubleshooting
 
-Saved models are located in ./output/.
+* **Dataset Class Balance:** Ensure your training dataset has a balanced representation of normal and attack traffic. Consider techniques like:
+    * Undersampling the majority class.
+    * Applying SMOTE (Synthetic Minority Over-sampling Technique) for minority oversampling.
+    * Using class weights during training to account for imbalances.
+* **Hyperparameter Tuning:** If you adapt Lucid to a new dataset or deployment environment, you might need to re-tune the hyperparameters in `lucid_cnn.py` for optimal performance.
+* **Model Selection:** Experiment with different CNN architectures in `utils/model_architectures.py` to find the best fit for your specific needs and resource constraints.
 
-Predict from Live Traffic
-```
-python --predict_live --model ./output/best_model.tflite
-```
-
-This performs:
-
-Real-time packet sniffing
-
-Threaded DDoS prediction using the quantized model
-
-Colored console output and file-based logging
-
-Example Output
-
-[DDoS Alert] DDoS Rate:__
-[Normal] DDoS Rate:__
-Log file: output/prediction_log.txt
-
-Model Performance (Validation)
-Metric	Value
-Accuracy	99.02%
-F1-Score	0.99
-Inference	2 ms
-Model Size	200 KB
-
-Evaluated on CIC-DDoS2019 using 80/20 split.
-
- Tips & Troubleshooting
-
-Ensure dataset class balance:
-
-Try undersampling the majority class
-
-Apply SMOTE for minority oversampling
-
-Use class weights in training
-
-Re-tune hyperparameters if adapting to a new dataset or deployment environment.
-
+## 📜 License
 License
 This project is licensed under the MIT License. See LICENSE for full details.
 This work incorporates and extends the official LUCID project (Apache License 2.0) and is intended for academic and non-commercial research use.
