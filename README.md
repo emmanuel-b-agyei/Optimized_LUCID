@@ -35,17 +35,19 @@ Funded by Horizon 2020 under grants no. 815141 (DECENTER), 830929 (CyberSec4Euro
 ## 🧩 Project Structure
 
 lucid/
-├── data/                         # Datasets and parsed HDF5 files
-├── models/                       # Saved Keras and TFLite models
-├── output/                       # Best model checkpoints and logs
-├── sample-dataset/              # Sample PCAPs for live prediction
-├── lucid_cnn.py                 # Main training + evaluation script
-├── live_predict.py              # Threaded packet capture and prediction
+├── data/ # Datasets and parsed HDF5 files
+├── models/ # Saved Keras and TFLite models
+├── output/ # Best model checkpoints and logs
+├── sample-dataset/ # Sample PCAPs for live prediction
+├── lucid_cnn.py # Main training + evaluation script
+├── live_predict.py # Threaded packet capture and prediction
 ├── utils/
-│   ├── data_preprocessing.py    # PCAP parsing, caching, and cleaning
-│   ├── model_architectures.py   # CNN architectures (original and optimized)
-│   ├── training.py              # Training, tuning, early stopping
-│   ├── inference.py             # Inference + quantization
-│   └── logger.py                # Colored output + logging
+│ ├── data_preprocessing.py # PCAP parsing, caching, and cleaning
+│ ├── model_architectures.py # CNN architectures (original and optimized)
+│ ├── training.py # Training, tuning, early stopping
+│ ├── inference.py # Inference + quantization
+│ └── logger.py # Colored output + logging
 ├── requirements.txt
 └── README.md
+
+
