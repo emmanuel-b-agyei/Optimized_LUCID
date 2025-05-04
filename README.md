@@ -33,8 +33,8 @@ Funded by Horizon 2020 under grants no. 815141 (DECENTER), 830929 (CyberSec4Euro
 ---
 
 
-
 ## Project Structure
+```graphql
 
 lucid/
 ├── data/                |  # Datasets and parsed HDF5 files
@@ -53,34 +53,12 @@ lucid/
 └── README.md
 
 ---
-
+```
 
 
 ## Setup Instructions
 
-
-This will:
-
-Train the CNN using the optimized architecture
-
-Tune hyperparameters using RandomizedSearchCV
-
-Apply early stopping and save the best model
-
-Quantize the best model to .tflite
-
-Saved models are located in ./output/.
-
-Predict from Live Traffic
-```
-python --predict_live --model ./output/best_model.tflite
-```
-
-
-
-## Setup Instructions
-
-### 1. Clone the Repository
+1. Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/lucid.git
@@ -110,9 +88,13 @@ This command will:
 
 Saved Keras models and their quantized `.tflite` versions, along with training logs, will be located in the `./output/` directory.
 
-## 🧪 Predict from Live Traffic
-bash python live_predict.py --model ./output/best_model.tflite
-This script performs:
+6.  Predict from Live Traffic
+Predict from Live Traffic
+```
+python --predict_live --model ./output/best_model.tflite
+```
+
+This will perform:
 
 * Real-time packet sniffing from your network interface.
 * Threaded prediction of potential DDoS attacks using the provided quantized `.tflite` model.
@@ -123,7 +105,9 @@ This script performs:
 Example Output
 
 [DDoS Alert] DDoS Rate:__
+
 [Normal] DDoS Rate:__
+
 Log file: output/prediction_log.txt
 
 ## Model Performance (Validation)
@@ -145,12 +129,11 @@ Log file: output/prediction_log.txt
 * **Hyperparameter Tuning:** If you adapt Lucid to a new dataset or deployment environment, you might need to re-tune the hyperparameters in `lucid_cnn.py` for optimal performance.
 * **Model Selection:** Experiment with different CNN architectures in `utils/model_architectures.py` to find the best fit for your specific needs and resource constraints.
 
-## License and Acknowledgement
-# License
+## License
 
 This project is licensed under the MIT License. See LICENSE for full details.
 This work incorporates and extends the official LUCID project (Apache License 2.0) and is intended for academic and non-commercial research use.
 
-# Acknowledgements
+## Acknowledgements
 Thanks to the original authors of LUCID for their foundational work in lightweight, deep learning-based DDoS detection.
 This optimized version was developed as part of a university thesis focused on low-latency packet classification.
