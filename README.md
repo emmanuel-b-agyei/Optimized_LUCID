@@ -34,11 +34,11 @@ Funded by Horizon 2020 under grants no. 815141 (DECENTER), 830929 (CyberSec4Euro
 
 ## 🧩 Project Structure
 
+# 🧠 LUCID: Lightweight CNN for DDoS Detection
+
 lucid/
 ├── data/ # Datasets and parsed HDF5 files
-
 ├── models/ # Saved Keras and TFLite models
-
 ├── output/ # Best model checkpoints and logs
 ├── sample-dataset/ # Sample PCAPs for live prediction
 ├── lucid_cnn.py # Main training + evaluation script
@@ -51,5 +51,3 @@ lucid/
 │ └── logger.py # Colored output + logging
 ├── requirements.txt
 └── README.md
-
-
