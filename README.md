@@ -37,23 +37,17 @@ Funded by Horizon 2020 under grants no. 815141 (DECENTER), 830929 (CyberSec4Euro
 ```graphql
 
 lucid/
-├── data/                | Datasets and parsed HDF5 files
-├── models/              | Saved Keras and TFLite models
-├── output/              | Best model checkpoints and logs
-├── sample-dataset/      | Sample PCAPs for live prediction
-├── lucid_cnn.py         | Main training + evaluation script
-├── live_predict.py      | Threaded packet capture and prediction
-├── utils/
-│   ├── data_preprocessing.py  | PCAP parsing, caching, and cleaning
-│   ├── model_architectures.py | CNN architectures (original and optimized)
-│   ├── training.py            | Training, tuning, early stopping
-│   ├── inference.py           | Inference + quantization
-│   └── logger.py              | Colored output + logging
+├── data/                   # Datasets and parsed HDF5 files
+├── models/                 # Saved Keras and TFLite models
+├── output/                 # Best model checkpoints and logs
+├── sample-dataset/         # Sample PCAPs for live prediction
+├── lucid_cnn.py            # Main training + evaluation + Threaded packet capture and prediction
+├── data_dataset_parser.py  # PCAP parsing, caching, and cleaning
 ├── requirements.txt
 └── README.md
-
----
 ```
+---
+
 
 
 ## Setup Instructions
@@ -61,8 +55,7 @@ lucid/
 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/lucid.git
-cd lucid
+git clone https://github.com/emmanuel-b-agyei/Optimized_LUCID.git
 ```
 
 2. Install Dependencies
@@ -117,8 +110,8 @@ Log file: output/prediction_log.txt
 | ----------- | ------- |
 | Accuracy    | 99.02%  |
 | F1-Score    | 0.99    |
-| Inference   | ~2 ms   |
-| Model Size  | ~200 KB |
+| Inference   | 2 ms   |
+| Model Size  | 200 KB |
 | Evaluated on | CIC-DDoS2019 using 80/20 split. |
 
 ## Tips & Troubleshooting
