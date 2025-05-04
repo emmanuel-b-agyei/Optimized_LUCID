@@ -51,3 +51,15 @@ lucid/
 │ └── logger.py # Colored output + logging
 ├── requirements.txt
 └── README.md
+
+
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/lucid.git
+cd lucid
