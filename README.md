@@ -102,7 +102,7 @@ Log file: output/prediction_log.txt
 | Trainging Time| 88.65 s |
 | Inference   | ~ 2 s   |
 | VM spec | Intel Xeon 16 cores, 32GB / 254GB storage|
-| Evaluated on | CIC-DDoS2019 using 80/20 split. |
+| Evaluated on | CIC-DDoS2019 |
 
 ## Tips & Troubleshooting
 
