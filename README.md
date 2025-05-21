@@ -57,7 +57,7 @@ Use utils/data_preprocessing.py to convert raw PCAPs if needed.
 
 6. Train the Model
 ```
-python lucid_cnn.py --train --dataset ./data/train.hdf5
+python lucid_cnn.py --train --dataset ./<dataset-name>/
 ```
 
 This command will:
@@ -65,7 +65,7 @@ This command will:
 * Train the CNN using the optimized architecture defined in `utils/model_architectures.py`.
 * Tune hyperparameters using `RandomizedSearchCV` for optimal performance.
 * Apply early stopping to prevent overfitting and save the best model.
-* Quantize the best trained model to a `.tflite` format for efficient inference.
+* Quantize the best-trained model to a `.tflite` format for efficient inference.
 
 Saved Keras models and their quantized `.tflite` versions, along with training logs, will be located in the `./output/` directory.
 
@@ -95,10 +95,9 @@ Log file: output/prediction_log.txt
 
 | Metric      | Value   |
 | ----------- | ------- |
-| Accuracy    | 99.02%  |
-| F1-Score    | 0.99    |
-| Inference   | 2 ms   |
-| Model Size  | 200 KB |
+| Accuracy    | 99.34%  |
+| F1-Score    | 99.35    |
+| Inference   | 2 s   |
 | Evaluated on | CIC-DDoS2019 using 80/20 split. |
 
 ## Tips & Troubleshooting
@@ -107,14 +106,7 @@ Log file: output/prediction_log.txt
     * Undersampling the majority class.
     * Applying SMOTE (Synthetic Minority Over-sampling Technique) for minority oversampling.
     * Using class weights during training to account for imbalances.
-* **Hyperparameter Tuning:** If you adapt Lucid to a new dataset or deployment environment, you might need to re-tune the hyperparameters in `lucid_cnn.py` for optimal performance.
-* **Model Selection:** Experiment with different CNN architectures in `utils/model_architectures.py` to find the best fit for your specific needs and resource constraints.
-
-## License
-
-This project is licensed under the MIT License. See LICENSE for full details.
-This work incorporates and extends the official LUCID project (Apache License 2.0) and is intended for academic and non-commercial research use.
 
 ## Acknowledgements
 Thanks to the original authors of LUCID for their foundational work in lightweight, deep learning-based DDoS detection.
-This optimized version was developed as part of a university thesis focused on low-latency packet classification.
+This optimized version was developed as part of a university thesis focused on low-latency and overhead packet classification.
