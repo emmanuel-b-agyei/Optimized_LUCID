@@ -99,7 +99,9 @@ Log file: output/prediction_log.txt
 | ----------- | ------- |
 | Accuracy    | 99.34%  |
 | F1-Score    | 99.35    |
-| Inference   | 2 s   |
+| Trainging Time| 88.65 s |
+| Inference   | ~ 2 s   |
+| VM spec | Intel Xeon 16 cores, 32GB / 254GB storage|
 | Evaluated on | CIC-DDoS2019 using 80/20 split. |
 
 ## Tips & Troubleshooting
