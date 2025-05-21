@@ -2,7 +2,7 @@
 
 LUCID is an optimized deep learning framework designed for real-time detection of DDoS attacks in network traffic. Originally proposed by Doriguzzi-Corin et al. (2020), this fork builds on their work and incorporates a set of targeted enhancements developed. These optimizations aim to reduce latency, overhead, and maintain high detection accuracy.
 
-**Disclaimer**: This repository is a derivative of the original LUCID system: DOI: [10.1109/TNSM.2020.2971776](https://doi.org/10.1109/TNSM.2020.2971776) Funded by Horizon 2020 under grants no. 815141 (DECENTER), 830929 (CyberSec4Europe), and 833685 (SPIDER).
+**Disclaimer**: This repository is a derivative of the original LUCID system: DOI: [10.1109/TNSM.2020.2971776](https://doi.org/10.1109/TNSM.2020.2971776). Partially funded by the European Union’s Horizon 2020 Research and Innovation Programme under grant agreements no. 815141 (DECENTER project), 830929 (CyberSec4Europe project) and n. 833685 (SPIDER project).
 The enhancements are part of an independent academic research project.  *
 
 ---
