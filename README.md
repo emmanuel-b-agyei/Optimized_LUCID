@@ -2,7 +2,12 @@
 
 LUCID is an optimized deep learning framework designed for real-time detection of DDoS attacks in network traffic. Originally proposed by Doriguzzi-Corin et al. (2020), this fork builds on their work and incorporates a set of targeted enhancements developed. These optimizations aim to reduce latency, overhead, and maintain high detection accuracy.
 
-**Disclaimer**: This repository is a derivative of the original LUCID system: DOI: [10.1109/TNSM.2020.2971776](https://doi.org/10.1109/TNSM.2020.2971776) Funded by Horizon 2020 under grants no. 815141 (DECENTER), 830929 (CyberSec4Europe), and 833685 (SPIDER). The enhancements are part of an independent academic research project.  *
+**Disclaimer**: This repository is a derivative of the original LUCID system: 
+R. Doriguzzi-Corin, S. Millar, S. Scott-Hayward, J. Martínez-del-Rincón and D. Siracusa, "Lucid: A Practical, Lightweight Deep Learning Solution for DDoS Attack Detection," in IEEE Transactions on Network and Service Management, vol. 17, no. 2, pp. 876-889, June 2020, doi: 10.1109/TNSM.2020.2971776.
+
+This work has been partially funded by the European Union’s Horizon 2020 Research and Innovation Programme under grant agreements no. 815141 (DECENTER project), 830929 (CyberSec4Europe project) and n. 833685 (SPIDER project).
+
+The enhancements are part of an independent academic research project.  *
 
 ---
 
@@ -62,9 +67,9 @@ python lucid_cnn.py --train --dataset ./<dataset-name>/
 
 This command will:
 
-* Train the CNN using the optimized architecture defined in `utils/model_architectures.py`.
-* Tune hyperparameters using `RandomizedSearchCV` for optimal performance.
-* Apply early stopping to prevent overfitting and save the best model.
+* Train the CNN using the optimized architecture.
+* Tune hyperparameters using Optuna for optimal performance.
+* Early stopping with Optuna to prevent overfitting and save the best model.
 * Quantize the best-trained model to a `.tflite` format for efficient inference.
 
 Saved Keras models and their quantized `.tflite` versions, along with training logs, will be located in the `./output/` directory.
@@ -72,7 +77,7 @@ Saved Keras models and their quantized `.tflite` versions, along with training l
 6.  Predict from Live Traffic
 Predict from Live Traffic
 ```
-python --predict_live --model ./output/best_model.tflite
+python --predict_live eth0 --model ./output/best_model.tflite
 ```
 
 This will perform:
