@@ -84,14 +84,6 @@ This will perform:
 * Clear, colored console output indicating the classification of each processed packet.
 * Detailed logging of predictions to `output/prediction_log.txt`.
 
-## Example Output
-Example Output
-
-[DDoS Alert] DDoS Rate:__
-
-[Normal] DDoS Rate:__
-
-Log file: output/prediction_log.txt
 
 ## Model Performance (Validation)
 
