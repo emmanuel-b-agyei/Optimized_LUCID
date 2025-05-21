@@ -57,11 +57,10 @@ pip install -r requirements.txt
 Place your .pcap or .hdf5 training files into the data/ directory.
 Use utils/data_preprocessing.py to convert raw PCAPs if needed.
 
-6. Train the Model
+5. Train the Model
 ```
 python lucid_cnn.py --train --dataset ./<dataset-name>/
 ```
-
 This command will:
 
 * Train the CNN using the optimized architecture.
@@ -71,11 +70,18 @@ This command will:
 
 Saved Keras models and their quantized `.tflite` versions, along with training logs, will be located in the `./output/` directory.
 
-6.  Predict from Live Traffic
+
+6. Test the the Model
+```
+python lucid_cnn.py --predict ./sample-dataset/ --model ./output/<best_model_name>.tflite
+```
+
+7.  Predict from Live Traffic
 Predict from Live Traffic
 ```
-python --predict_live eth0 --model ./output/best_model.tflite
+python lucid_cnn.py --predict_live <network_interface_name> --model ./output/<best_model_name>.tflite
 ```
+NB: You have to give administrative privilege to capture live packets
 
 This will perform:
 
