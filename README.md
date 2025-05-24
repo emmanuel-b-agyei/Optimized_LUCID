@@ -73,13 +73,13 @@ Saved Keras models and their quantized `.tflite` versions, along with training l
 
 6. Test the the Model
 ```
-python lucid_cnn.py --predict ./sample-dataset/ --model ./output/<best_model_name>.tflite
+python lucid_cnn.py --predict ./sample-dataset/ --model ./output/<best_model_name>_quantized.tflite
 ```
 
 7.  Predict from Live Traffic
 Predict from Live Traffic
 ```
-python lucid_cnn.py --predict_live <network_interface_name> --model ./output/<best_model_name>.tflite
+python lucid_cnn.py --predict_live <network_interface_name> --model ./output/<best_model_name>_quantized.tflite
 ```
 NB: You have to give administrative privilege to capture live packets
 
